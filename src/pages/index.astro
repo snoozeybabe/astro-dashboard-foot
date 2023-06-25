@@ -1,41 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import Dashboard from '../components/Dashboard';
 
-const topKpis = [
-	{title : 'FootBalls club', value : 400, label : 'This year'},
-	{title : 'FootBalls club', value : 300, label : 'This year'},
-	{title : 'FootBalls club', value : 400, label : 'This year'},
-	{title : 'FootBalls club', value : 300, label : 'This year'}
-]
+const apiKey = import.meta.env.RAPID_API_KEY;
 
 ---
 
 <Layout title="Welcome to Astro.">
 	<main class="flex flex-col gap-6">
-		<div class=" h-auto mb-2 relative">
-			<span class="bold text-[#F9EBE0] text-3xl m-auto">Astro Ball ⚽</span>
-			<p class="bold text-[#F9EBE0] text-l m-auto">Some statistics about football around the word </p>
-		</div>
-		<div id="top-kpis" class="h-1/3 flex flex-row gap-6" >
-			{topKpis.map(t=> {
-				return (
-				<div class="p-4 w-1/4 h-full rounded-xl bg-[#FDF48C] text-[#000200] flex flex-col">
-				<span>{t.title}</span>
-				<span class="bold text-[4em] m-auto">{t.value}</span>
-				<span class="text-[12px] mx-auto">{t.label}</span>
-			</div>
-				)
-			})}
-		</div>
-		<div id="mid-kpis" class="h-1/3 flex flex-row gap-6" >
-			<div class="p-2 w-3/4 h-full rounded-xl bg-[#FDF48C]"></div>
-			<div class="p-2 w-1/4 h-full rounded-xl bg-[#FDF48C]"></div>
-		</div>
-		<div id="bottom-kpis" class="h-1/3 flex flex-row gap-6" >
-			<div class="p-2 w-1/4 h-full rounded-xl bg-[#FDF48C]"></div>
-			<div class="p-2 w-3/4 h-full rounded-xl bg-[#FDF48C]"></div>
-		</div>
+		<Dashboard client:visible apiRapidKey={apiKey}/>
 	</main>
 </Layout>
 
