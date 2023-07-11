@@ -1,6 +1,8 @@
 import { useEffect, useState} from "react";
 
 import Select from '../components/Select/Select';
+import BarChart from "../components/BarChart/Barchart";
+import LineChart from "../components/LineChart/LineChart";
 
 
 function Dashboard({apiRapidKey}) {
@@ -61,7 +63,7 @@ useEffect( () => {
 },[])
   return (
     <>
-    <div className=" h-auto mb-2 relative">
+    <div className=" h-auto mb-2 relative ">
 			<span className="bold text-[#F9EBE0] text-3xl m-auto">Astro Ball ⚽</span>
 			<p className="bold text-[#F9EBE0] text-l m-auto">Some statistics about football around the world </p>
 		</div>
@@ -84,16 +86,11 @@ useEffect( () => {
 			})}
 		</div>
 		<div id="mid-kpis" className="h-1/3 flex flex-row gap-6" >
-    
-    
 			<div className="p-2 w-3/4 h-full rounded-xl bg-[#FDF48C] flex flex-col gap-2">
-
         <div className="h-1/5">
           <span className="text-[#000200] p-2">Top scorer</span>
-
         </div>
         <div className=" h-4/5 flex gap-6 m-auto">
-
           {topScorer.map(scorer => {
             return(
               <div className=" w-1/5 h-auto flex flex-col items-center justify-evenly text-[#000200]">
@@ -105,18 +102,18 @@ useEffect( () => {
               </div>
             )
           })}
-  
         </div>
-
-        
-  
-    
       </div>
-			<div className="p-2 w-1/4 h-full rounded-xl bg-[#FDF48C]"></div>
+			<div className="p-2 w-1/4 h-full rounded-xl bg-[#FDF48C]">
+      <LineChart/>
+      
+      </div>
 		</div>
-		<div id="bottom-kpis" className="h-1/3 flex flex-row gap-6" >
+		<div id="bottom-kpis" className="h-1/3 flex flex-row gap-6 text-[#000200]" >
 			<div className="p-2 w-1/4 h-full rounded-xl bg-[#FDF48C]"></div>
-			<div className="p-2 w-3/4 h-full rounded-xl bg-[#FDF48C]"></div>
+			<div className="p-2 w-3/4 h-full rounded-xl bg-[#FDF48C]">
+          <BarChart/>
+      </div>
 		</div>
     </>
   )
