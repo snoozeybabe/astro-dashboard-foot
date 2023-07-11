@@ -6,12 +6,18 @@ import Select from '../components/Select/Select';
 function Dashboard({apiRapidKey}) {
 
 
-
 const topKpis = [
 	{title : 'FootBalls club', value : 500, label : 'This year'},
 	{title : 'FootBalls club', value : 300, label : 'This year'},
 	{title : 'FootBalls club', value : 400, label : 'This year'},
 	{title : 'FootBalls club', value : 300, label : 'This year'}
+]
+const topScorer= [
+  { name:"G. Barry", goals : 35, club : 'JSK', picture : 'https://media.api-sports.io/football/players/19153.png'},
+  { name:"G. Barry", goals : 35, club : 'JSK', picture : 'https://media.api-sports.io/football/players/19153.png'},
+  { name:"G. Barry", goals : 35, club : 'JSK', picture : 'https://media.api-sports.io/football/players/19153.png'},
+  { name:"G. Barry", goals : 35, club : 'JSK', picture : 'https://media.api-sports.io/football/players/19153.png'},
+  { name:"G. Barry", goals : 35, club : 'JSK', picture : 'https://media.api-sports.io/football/players/19153.png'},
 ]
 
 
@@ -82,13 +88,24 @@ useEffect( () => {
     
 			<div className="p-2 w-3/4 h-full rounded-xl bg-[#FDF48C] flex flex-col gap-2">
 
-        <div className="border h-1/5"></div>
+        <div className="h-1/5">
+          <span className="text-[#000200] p-2">Top scorer</span>
+
+        </div>
         <div className=" h-4/5 flex gap-6 m-auto">
-          <div className="border border-red-600 w-32 h-32 rounded-full"></div>
-          <div className="border border-red-600 w-32 h-32 rounded-full"></div>
-          <div className="border border-red-600 w-32 h-32 rounded-full"></div>
-          <div className="border border-red-600 w-32 h-32 rounded-full"></div>
-          <div className="border border-red-600 w-32 h-32 rounded-full"></div>
+
+          {topScorer.map(scorer => {
+            return(
+              <div className=" w-1/5 h-auto flex flex-col items-center justify-evenly text-[#000200]">
+                <div className="border overflow-hidden border-[#000200] w-28 h-28 rounded-full">
+                  <img className="  rounded-full" src={scorer.picture}/>
+                </div> 
+                <span className="font-bold">{scorer.name}</span>
+                <span className="text-[12px]">{scorer.goals} goals</span>
+              </div>
+            )
+          })}
+  
         </div>
 
         
