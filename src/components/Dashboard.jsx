@@ -5,7 +5,97 @@ import BarChart from "../components/BarChart/Barchart";
 import LineChart from "../components/LineChart/LineChart";
 
 
-function Dashboard({apiRapidKey}) {
+
+
+const formatTopScrorers = async (datas) => {
+
+  console.log(datas)
+  let totalGoals = 0;
+  let totalYellowCards = 0;
+  let totalRedCards = 0;
+
+  const formattedDatas = datas.map(scorer => {    
+    const scorerInfos = scorer.player;
+    const scorerStats = scorer.statistics
+
+    totalGoals += scorerStats[0]['goals'].total;
+    totalYellowCards += scorerStats[0]['cards'].yellow;
+    totalRedCards += scorerStats[0]['cards'].red;
+
+    topScorers :
+      return {
+        name : scorerInfos.name,
+        age : scorerInfos.age,
+        photo : scorerInfos.photo,
+        goals : scorerStats[0]['goals'].total
+      }
+  })
+
+  return { totalYellowCards :totalYellowCards,totalGoals : totalGoals, totalRedCards :totalRedCards, topScorers : formattedDatas.slice(0,5)  }
+}
+
+
+
+
+
+
+function Dashboard({apiRapidKey, leagueDatas}) {
+
+
+let initScrorerState = {
+  totalYellowCards :0,totalGoals : 0, totalRedCards :0, topScorers : []
+}
+
+
+const [leagueSelected, setLeagueSelected] = useState(leagueDatas[0]);
+const [leagueSeasons, setLeagueSeasons] = useState(leagueDatas[0].seasons);
+const [selectedSeason, setSelectedSeason] = useState(leagueDatas[0].seasons[0])
+const [scorersDatas, setScorersDatas] = useState(initScrorerState)
+
+
+
+const url = `https://api-football-v1.p.rapidapi.com/v3/players/topscorers?league=${leagueSelected['id']}&season=${selectedSeason['year']}`;
+
+const apiOptions = {
+  method: 'GET',
+  headers: {
+    'X-RapidAPI-Key': apiRapidKey,
+    'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+  }
+};
+
+const heandleSeasonChange = season => {
+  setSelectedSeason(season)
+}
+
+
+const handleLeagueChange =  league => {
+  setLeagueSelected(league)
+  setLeagueSeasons(league.seasons)
+  heandleSeasonChange(league.seasons[0])
+}
+useEffect(() => {
+
+  try {
+    const fetchDatas = async() => {
+      const response = await fetch(url,apiOptions);
+      const result = await response.json();
+      return result;
+    }
+    fetchDatas().then(async(res) => {
+      return await formatTopScrorers(res.response)
+    }).then((formattedRes) => {
+        setScorersDatas(formattedRes)
+    }).catch(err => {
+      return err
+    })
+  } catch (error) {
+    console.log(error)
+  }
+
+  
+}, [leagueSelected,selectedSeason])
+
 
 
 const topKpis = [
@@ -23,43 +113,10 @@ const topScorer= [
 ]
 
 
-const seasons = [
-  { label : '2018', value : 2018},
-  { label : '2019', value : 2019},
-  { label : '2020', value : 2020},
-  { label : '2021', value : 2021},
-  { label : '2022', value : 2022},
-  { label : '2023', value : 2023}
-]
-
-const url = "https://api-football-v1.p.rapidapi.com/v3/fixtures?season=2022";
-
-const apiOptions = {
-  method: 'GET',
-  headers: {
-    'X-RapidAPI-Key': apiRapidKey,
-    'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
-  }
-};
-
-useEffect( () => {
-
-  try {
-
-    const fetchDatas = async() => {
-      const response = await fetch(url,apiOptions);
-      const result = await response.json();
-      console.log(result)
-    }
-
-    // fetchDatas().catch(err => {
-    //   return err
-    // })
-  } catch (error) {
-    console.log(error)
-  }
+const bottomKpi = 	{title : 'FootBalls club', value : 300, label : 'This year'};
 
 
+useEffect( () => {  
 },[])
   return (
     <>
@@ -69,8 +126,8 @@ useEffect( () => {
 		</div>
 
     <div className=" h-auto mb-2 relative flex flex-row gap-3">
-      <Select label="League" />
-      <Select label="Season" datas={seasons}/>
+      <Select label="League" datas={leagueDatas} params="name" selected={leagueSelected} paramSelect ='id' fctChange={handleLeagueChange} />
+      <Select label="Season" datas={leagueSeasons} params="year" selected={selectedSeason} paramSelect='year' fctChange={heandleSeasonChange}/>
 
   </div>
 
@@ -91,11 +148,14 @@ useEffect( () => {
           <span className="text-[#000200] p-2">Top scorer</span>
         </div>
         <div className=" h-4/5 flex gap-6 m-auto">
-          {topScorer.map(scorer => {
+ 
+      
+          {scorersDatas.topScorers || scorersDatas.topScorers.length === 0 ?  (<span className="text-[#000200] text-xl m-auto">No top scorer datas</span>) : 
+          scorersDatas.topScorers.map(scorer => {
             return(
               <div className=" w-1/5 h-auto flex flex-col items-center justify-evenly text-[#000200]">
                 <div className="border overflow-hidden border-[#000200] w-28 h-28 rounded-full">
-                  <img className="  rounded-full" src={scorer.picture}/>
+                  <img className="  rounded-full" src={scorer.photo}/>
                 </div> 
                 <span className="font-bold">{scorer.name}</span>
                 <span className="text-[12px]">{scorer.goals} goals</span>
@@ -110,7 +170,13 @@ useEffect( () => {
       </div>
 		</div>
 		<div id="bottom-kpis" className="h-1/3 flex flex-row gap-6 text-[#000200]" >
-			<div className="p-2 w-1/4 h-full rounded-xl bg-[#FDF48C]"></div>
+			<div className="p-4 w-1/4 h-full rounded-xl bg-[#FDF48C] text-[#000200] flex flex-col">
+
+				<span>{bottomKpi.title}</span>
+				<span className="bold text-[4em] m-auto">{bottomKpi.value}</span>
+				<span className="text-[12px] mx-auto">{bottomKpi.label}</span>
+
+      </div>
 			<div className="p-2 w-3/4 h-full rounded-xl bg-[#FDF48C]">
           <BarChart/>
       </div>

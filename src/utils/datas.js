@@ -1,16 +1,11 @@
-export default leagueInformations = [
+export const leagueInformations = [
   {
-  "league": {
+
     "id": 169,
     "name": "Super League",
     "type": "League",
-    "logo": "https://media.api-sports.io/football/leagues/169.png"
-  },
-  "country": {
-    "name": "China",
-    "code": "CN",
-    "flag": "https://media.api-sports.io/flags/cn.svg"
-  },
+    "logo": "https://media.api-sports.io/football/leagues/169.png",
+
   "seasons": [
     {
       "year": 2016,
@@ -55,17 +50,13 @@ export default leagueInformations = [
 
 
 {
-  "league": {
+
     "id": 88,
     "name": "Eredivisie",
     "type": "League",
-    "logo": "https://media.api-sports.io/football/leagues/88.png"
-  },
-  "country": {
-    "name": "Netherlands",
-    "code": "NL",
-    "flag": "https://media.api-sports.io/flags/nl.svg"
-  },
+    "logo": "https://media.api-sports.io/football/leagues/88.png",
+
+
   "seasons": [
     {
       "year": 2010,
@@ -140,17 +131,13 @@ export default leagueInformations = [
 
 
 {
-  "league": {
+
     "id": 78,
     "name": "Bundesliga 1",
     "type": "League",
-    "logo": "https://media.api-sports.io/football/leagues/78.png"
-  },
-  "country": {
-    "name": "Germany",
-    "code": "DE",
-    "flag": "https://media.api-sports.io/flags/de.svg"
-  },
+    "logo": "https://media.api-sports.io/football/leagues/78.png",
+
+
   "seasons": [
     {
       "year": 2010,
@@ -234,17 +221,13 @@ export default leagueInformations = [
 
 
 {
-  "league": {
+
     "id": 253,
     "name": "Major League Soccer",
     "type": "League",
-    "logo": "https://media.api-sports.io/football/leagues/253.png"
-  },
-  "country": {
-    "name": "USA",
-    "code": "US",
-    "flag": "https://media.api-sports.io/flags/us.svg"
-  },
+    "logo": "https://media.api-sports.io/football/leagues/253.png",
+
+
   "seasons": [
     {
       "year": 2012,
@@ -320,17 +303,13 @@ export default leagueInformations = [
 
 
 {
-  "league": {
+
     "id": 242,
     "name": "Serie A",
     "type": "League",
-    "logo": "https://media.api-sports.io/football/leagues/242.png"
-  },
-  "country": {
-    "name": "Ecuador",
-    "code": "EC",
-    "flag": "https://media.api-sports.io/flags/ec.svg"
-  },
+    "logo": "https://media.api-sports.io/football/leagues/242.png",
+  
+
   "seasons": [
     {
       "year": 2012,
@@ -407,17 +386,13 @@ export default leagueInformations = [
 
 
 {
-  "league": {
+
     "id": 268,
     "name": "Primera Division - Apertura",
     "type": "League",
-    "logo": "https://media.api-sports.io/football/leagues/268.png"
-  },
-  "country": {
-    "name": "Uruguay",
-    "code": "UY",
-    "flag": "https://media.api-sports.io/flags/uy.svg"
-  },
+    "logo": "https://media.api-sports.io/football/leagues/268.png",
+  
+
   "seasons": [
     {
       "year": 2012,
@@ -485,17 +460,13 @@ export default leagueInformations = [
 
 
 {
-  "league": {
+
     "id": 378,
     "name": "Ligue 1",
     "type": "League",
-    "logo": "https://media.api-sports.io/football/leagues/378.png"
-  },
-  "country": {
-    "name": "Guinea",
-    "code": "GN",
-    "flag": "https://media.api-sports.io/flags/gn.svg"
-  },
+    "logo": "https://media.api-sports.io/football/leagues/378.png",
+
+
   "seasons": [
     {
       "year": 2014,
@@ -551,17 +522,13 @@ export default leagueInformations = [
 
 
 {
-  "league": {
+
     "id": 140,
     "name": "Primera Division",
     "type": "League",
-    "logo": "https://media.api-sports.io/football/leagues/140.png"
-  },
-  "country": {
-    "name": "Spain",
-    "code": "ES",
-    "flag": "https://media.api-sports.io/flags/es.svg"
-  },
+    "logo": "https://media.api-sports.io/football/leagues/140.png",
+  
+
   "seasons": [
     {
       "year": 2010,
@@ -644,17 +611,13 @@ export default leagueInformations = [
 
 
 {
-  "league": {
+
     "id": 333,
     "name": "Premier League",
     "type": "League",
-    "logo": "https://media.api-sports.io/football/leagues/333.png"
-  },
-  "country": {
-    "name": "Ukraine",
-    "code": "UA",
-    "flag": "https://media.api-sports.io/flags/ua.svg"
-  },
+    "logo": "https://media.api-sports.io/football/leagues/333.png",
+  
+
   "seasons": [
     {
       "year": 2011,
@@ -729,17 +692,13 @@ export default leagueInformations = [
 },
 
 {
-  "league": {
+
     "id": 186,
     "name": "Ligue 1",
     "type": "League",
-    "logo": "https://media.api-sports.io/football/leagues/186.png"
-  },
-  "country": {
-    "name": "Algeria",
-    "code": "DZ",
-    "flag": "https://media.api-sports.io/flags/dz.svg"
-  },
+    "logo": "https://media.api-sports.io/football/leagues/186.png",
+  
+
   "seasons": [
     {
       "year": 2011,

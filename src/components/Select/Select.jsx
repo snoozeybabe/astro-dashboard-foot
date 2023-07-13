@@ -20,25 +20,25 @@ const DropDownSvg = () => {
 
 }
 
-function Select({label}) {
+function Select({label,datas,params,selected,paramSelect, fctChange}) {
   return(
-    <div className="h-[30px] w-[150px]">
+    <div className="h-[30px] w-[190px]">
       <div class="group inline-block w-[100%]">
         <button
-          class="outline-none focus:outline-none border px-3  w-[100%] bg-[#DCDCDC] text-black rounded-sm flex items-center min-w-32"
+          class="outline-none focus:outline-none border px-3  w-[100%] bg-[#DCDCDC] text-black rounded-sm flex items-center min-w-32 truncate ..."
         >
-          <span class="pr-1 font-semibold flex-1">{label}</span>
+          <span class="pr-1 font-semibold flex-1">{selected[params]}</span>
           <span>
             <DropDownSvg/>
           </span>
         </button>
         <ul
-          class="bg-[#DCDCDC]  text-black border rounded-sm transform scale-0 group-hover:scale-100 absolute 
+          class="bg-[#DCDCDC] cursor-pointer  text-black border rounded-sm transform scale-0 group-hover:scale-100 absolute 
         transition duration-150 ease-in-out origin-top min-w-[150px]"
         >
-          <li class="rounded-sm px-3 hover:bg-black hover:text-[#DCDCDC]">Programming</li>
-          <li class="rounded-sm px-3  hover:bg-black hover:text-[#DCDCDC]">DevOps</li>
-          <li class="rounded-sm px-3   hover:bg-black hover:text-[#DCDCDC]">Testing</li>
+        {datas.map( d => {          
+          return (<li onClick={() => fctChange(d)} class={`rounded-sm px-3 ${d[paramSelect] === selected[paramSelect] ? 'bg-black text-[#DCDCDC] ' :''} hover:bg-black hover:text-[#DCDCDC]`}>{d[params]}</li>)
+        })}
         </ul>
       </div>
     </div>

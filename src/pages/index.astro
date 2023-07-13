@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Dashboard from '../components/Dashboard';
+import { leagueInformations} from '../utils/datas.js';
 
 const apiKey = import.meta.env.RAPID_API_KEY;
 
@@ -9,7 +10,7 @@ const apiKey = import.meta.env.RAPID_API_KEY;
 
 <Layout title="Welcome to Astro.">
 	<main class="flex flex-col gap-6">
-		<Dashboard client:visible apiRapidKey={apiKey}/>
+		<Dashboard client:visible apiRapidKey={apiKey} leagueDatas={leagueInformations}/>
 	</main>
 </Layout>
 
