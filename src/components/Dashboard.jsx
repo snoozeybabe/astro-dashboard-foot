@@ -1000,14 +1000,20 @@ const formatTopScrorers = async (datas) => {
 };
 const formatLeagueStat = (leagueStat) => {
   const leagueDatas = leagueStat.response[0].league;
+  let matchPlayed = 0;
   const leagueResutls = leagueDatas["standings"][0].map((team) => {
+    matchPlayed += team.all["played"];
     return {
       name: team["team"]["name"],
       logo: team["team"]["logo"],
       goals: team.all["goals"]["for"] + team.all["goals"]["against"],
     };
   });
-  return leagueResutls;
+  return {
+    matchPlayed,
+    leagueResutls,
+    winner: leagueDatas["standings"][0][0].team,
+  };
 };
 
 function Dashboard({ apiRapidKey, leagueDatas }) {
@@ -1084,7 +1090,11 @@ function Dashboard({ apiRapidKey, leagueDatas }) {
     { title: "Red Cards", valueKey: "totalRedCards", label: "This year" },
   ];
 
-  const bottomKpi = { title: "FootBalls club", value: 300, label: "This year" };
+  const bottomKpi = {
+    title: "Match played",
+    value: leagueStats.matchPlayed,
+    label: "This year",
+  };
 
   useEffect(() => {}, []);
   return (
@@ -1158,8 +1168,16 @@ function Dashboard({ apiRapidKey, leagueDatas }) {
             )}
           </div>
         </div>
-        <div className="p-2 w-1/4 h-full rounded-xl bg-[#FDF48C]">
-          <LineChart />
+        <div className="p-2 w-1/4 h-full rounded-xl bg-[#FDF48C] text-[#000200] flex flex-col items-center">
+          <span>Season Winner</span>
+
+          <img
+            className="  rounded-full w-32 h-32 "
+            src={leagueStats.winner["logo"]}
+          />
+          <span className="bold text-[1em] m-auto">
+            {leagueStats.winner["name"]}{" "}
+          </span>
         </div>
       </div>
       <div
@@ -1169,10 +1187,9 @@ function Dashboard({ apiRapidKey, leagueDatas }) {
         <div className="p-4 w-1/4 h-full rounded-xl bg-[#FDF48C] text-[#000200] flex flex-col">
           <span>{bottomKpi.title}</span>
           <span className="bold text-[4em] m-auto">{bottomKpi.value}</span>
-          <span className="text-[12px] mx-auto">{bottomKpi.label}</span>
         </div>
         <div className="p-2 w-3/4 h-full rounded-xl bg-[#FDF48C]">
-          <BarChart datas={leagueStats} />
+          <BarChart datas={leagueStats.leagueResutls} />
         </div>
       </div>
     </>
