@@ -7,6 +7,10 @@
 
 
 
-> A footbal analatytics dashboard made with Astro + Tailwind + React
-> Api used : https://rapidapi.com/api-sports/api/api-football
+### Description
+
+The purpose of this project was to create a dahsboard as a Data Analyst. To make this I wanted to try the framework [AstroJs](http://localhost/)  and try to play with a football API.
+
+- A footbal analatytics dashboard made with Astro + Tailwind + React
+- Api used : https://rapidapi.com/api-sports/api/api-football
 
