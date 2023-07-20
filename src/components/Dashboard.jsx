@@ -386,7 +386,7 @@ function Dashboard({ apiRapidKey, leagueDatas }) {
         id="bottom-kpis"
         className="h-1/3 flex flex-row gap-6 text-[#000200]"
       >
-        <div className="p-4 w-1/4 h-full rounded-xl bg-[#FFF27A] text-[#000200] flex flex-col">
+        <div className="p-4 w-1/4 h-full rounded-xl bg-[#FFF27A] text-[#000200] flex flex-col font-bold">
           <span>{bottomKpi.title}</span>
           <span className="bold text-[5em] m-auto">
             {leagueStats[bottomKpi.value]}
