@@ -9,8 +9,31 @@
 
 ### Description
 
-The purpose of this project was to create a dahsboard as a Data Analyst. To make this I wanted to try the framework [AstroJs](http://localhost/)  and try to play with a football API.
+The purpose of this project was to create a dahsboard as a Data Analyst. To make this I wanted to try the framework [AstroJs](https://astro.build/)  and try to play with a football API.
+I selected the top 10 fooball leagues and present multiple KPI's by season : 
+ * Goals scored during season.
+ * Yellow cards.
+ * Red cards.
+ * The total minutes cumulated played.
+ * Top scorer of the season.
+ * The season winner.
+ * Match played.
+ * Chart showing goals scored by club. 
 
-- A footbal analatytics dashboard made with Astro + Tailwind + React
-- Api used : https://rapidapi.com/api-sports/api/api-football
+### Stack
 
+- [AstroJs](https://astro.build/) 
+- [ReactJs](https://fr.legacy.reactjs.org/)
+- [TailwindCSS](https://tailwindcss.com/).
+- [RapidApi](https://rapidapi.com/api-sports/api/api-football)
+
+### Installation
+
+###### Install dependencies: 
+`yarn install`
+
+###### Run the project:
+`yarn start`
+
+
+All feedback is welcome ✌️
