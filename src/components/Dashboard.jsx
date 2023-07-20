@@ -4,157 +4,6 @@ import Select from "../components/Select/Select";
 import BarChart from "../components/BarChart/Barchart";
 import { topKpis, bottomKpi } from "../utils/datas";
 
-const formattedRes = {
-  formattedToScorers: {
-    totalYellowCards: 71,
-    totalGoals: 245,
-    totalRedCards: 3,
-    totalMinutes: 47193,
-    topScorers: [
-      {
-        name: "Dimitar Ivanov Berbatov",
-        age: 37,
-        photo: "https://media-2.api-sports.io/football/players/113639.png",
-        goals: 20,
-      },
-      {
-        name: "C. Tevez",
-        age: 37,
-        photo: "https://media-3.api-sports.io/football/players/5982.png",
-        goals: 20,
-      },
-      {
-        name: "Robin van Persie",
-        age: 36,
-        photo: "https://media-2.api-sports.io/football/players/37162.png",
-        goals: 18,
-      },
-      {
-        name: "Dirk Kuijt",
-        age: 37,
-        photo: "https://media-2.api-sports.io/football/players/93990.png",
-        goals: 13,
-      },
-      {
-        name: "D. Campbell",
-        age: 40,
-        photo: "https://media-1.api-sports.io/football/players/114836.png",
-        goals: 13,
-      },
-    ],
-  },
-  formattedStandings: {
-    matchPlayed: 760,
-    leagueResults: [
-      {
-        name: "Manchester United",
-        logo: "https://media-1.api-sports.io/football/teams/33.png",
-        goals: 115,
-      },
-      {
-        name: "Chelsea",
-        logo: "https://media-2.api-sports.io/football/teams/49.png",
-        goals: 102,
-      },
-      {
-        name: "Manchester City",
-        logo: "https://media-3.api-sports.io/football/teams/50.png",
-        goals: 93,
-      },
-      {
-        name: "Arsenal",
-        logo: "https://media-1.api-sports.io/football/teams/42.png",
-        goals: 115,
-      },
-      {
-        name: "Tottenham",
-        logo: "https://media-1.api-sports.io/football/teams/47.png",
-        goals: 101,
-      },
-      {
-        name: "Liverpool",
-        logo: "https://media-1.api-sports.io/football/teams/40.png",
-        goals: 103,
-      },
-      {
-        name: "Everton",
-        logo: "https://media-3.api-sports.io/football/teams/45.png",
-        goals: 96,
-      },
-      {
-        name: "Fulham",
-        logo: "https://media-1.api-sports.io/football/teams/36.png",
-        goals: 92,
-      },
-      {
-        name: "Aston Villa",
-        logo: "https://media-2.api-sports.io/football/teams/66.png",
-        goals: 107,
-      },
-      {
-        name: "Sunderland",
-        logo: "https://media-1.api-sports.io/football/teams/746.png",
-        goals: 101,
-      },
-      {
-        name: "West Brom",
-        logo: "https://media-2.api-sports.io/football/teams/60.png",
-        goals: 127,
-      },
-      {
-        name: "Newcastle",
-        logo: "https://media-2.api-sports.io/football/teams/34.png",
-        goals: 113,
-      },
-      {
-        name: "Stoke City",
-        logo: "https://media-3.api-sports.io/football/teams/75.png",
-        goals: 94,
-      },
-      {
-        name: "Bolton",
-        logo: "https://media-2.api-sports.io/football/teams/68.png",
-        goals: 108,
-      },
-      {
-        name: "Blackburn",
-        logo: "https://media-1.api-sports.io/football/teams/67.png",
-        goals: 105,
-      },
-      {
-        name: "Wigan",
-        logo: "https://media-2.api-sports.io/football/teams/61.png",
-        goals: 101,
-      },
-      {
-        name: "Wolves",
-        logo: "https://media-2.api-sports.io/football/teams/39.png",
-        goals: 112,
-      },
-      {
-        name: "Birmingham",
-        logo: "https://media-2.api-sports.io/football/teams/54.png",
-        goals: 95,
-      },
-      {
-        name: "Blackpool",
-        logo: "https://media-3.api-sports.io/football/teams/1356.png",
-        goals: 133,
-      },
-      {
-        name: "West Ham",
-        logo: "https://media-3.api-sports.io/football/teams/48.png",
-        goals: 113,
-      },
-    ],
-    winner: {
-      id: 33,
-      name: "Manchester United",
-      logo: "https://media-1.api-sports.io/football/teams/33.png",
-    },
-  },
-};
-
 const formatTopScrorers = async (datas) => {
   let totalGoals = 0;
   let totalYellowCards = 0;
@@ -270,28 +119,28 @@ function Dashboard({ apiRapidKey, leagueDatas }) {
   };
   useEffect(() => {
     try {
-      // fetchDatas()
-      //   .then(async (res) => {
-      //     const scrorerResult = res[0].result;
-      //     const standingResult = res[1].result;
+      fetchDatas()
+        .then(async (res) => {
+          const scrorerResult = res[0].result;
+          const standingResult = res[1].result;
 
-      //     console.log(standingResult);
+          console.log(standingResult);
 
-      //     const formattedToScorers = await formatTopScrorers(
-      //       scrorerResult.response
-      //     );
-      //     const formattedStandings = await formatLeagueStat(standingResult);
-      //     return { formattedToScorers, formattedStandings };
-      //   })
-      //   .then((formattedRes) => {
-      setLeagueStats(formattedRes.formattedStandings);
-      setScorersDatas(formattedRes.formattedToScorers);
+          const formattedToScorers = await formatTopScrorers(
+            scrorerResult.response
+          );
+          const formattedStandings = await formatLeagueStat(standingResult);
+          return { formattedToScorers, formattedStandings };
+        })
+        .then((formattedRes) => {
+          setLeagueStats(formattedRes.formattedStandings);
+          setScorersDatas(formattedRes.formattedToScorers);
 
-      //   console.log(formattedRes);
-      // })
-      // .catch((err) => {
-      //   return err;
-      // });
+          console.log(formattedRes);
+        })
+        .catch((err) => {
+          return err;
+        });
     } catch (error) {
       console.log(error);
     }
