@@ -1,5 +1,4 @@
 export const leagueInformations = [
-
   {
     id: 39,
     name: "Premier League",
@@ -674,3 +673,20 @@ export const leagueInformations = [
     ],
   },
 ];
+
+export const topKpis = [
+  { title: "Goals", valueKey: "totalGoals", label: "This year" },
+  { title: "Yellow Cards", valueKey: "totalYellowCards", label: "This year" },
+  { title: "Red Cards", valueKey: "totalRedCards", label: "This year" },
+  {
+    title: "Minutes cumulated",
+    valueKey: "totalMinutes",
+    label: "This year",
+  },
+];
+
+export const bottomKpi = {
+  title: "Match played",
+  value: "matchPlayed",
+  label: "This year",
+};

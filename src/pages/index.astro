@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
 import Dashboard from '../components/Dashboard';
 import { leagueInformations} from '../utils/datas.js';
 
@@ -9,9 +8,13 @@ const apiKey = import.meta.env.RAPID_API_KEY;
 ---
 
 <Layout title="Astro Ball ⚽ ">
-	<main class="flex flex-col gap-6">
-		<Dashboard client:visible apiRapidKey={apiKey} leagueDatas={leagueInformations}/>
+	<main class="hidden lg:flex flex-col gap-6 ">
+			<Dashboard client:visible apiRapidKey={apiKey} leagueDatas={leagueInformations}/>
 	</main>
+
+	<div class="lg:hidden flex h-[100vh] items-center justify-center">
+		<span class="text-center">Only the desktop version is availble for the moment </span>
+	</div>
 </Layout>
 
 <style>
