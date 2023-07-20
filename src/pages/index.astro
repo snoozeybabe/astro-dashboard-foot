@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
 import Dashboard from '../components/Dashboard';
 import { leagueInformations} from '../utils/datas.js';
 
@@ -14,7 +13,7 @@ const apiKey = import.meta.env.RAPID_API_KEY;
 	</main>
 
 	<div class="lg:hidden flex h-[100vh] items-center justify-center">
-		<span>Only the desktop version is availble for the moment </span>
+		<span class="text-center">Only the desktop version is availble for the moment </span>
 	</div>
 </Layout>
 
