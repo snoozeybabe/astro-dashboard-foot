@@ -8,4 +8,5 @@
 
 
 > A footbal analatytics dashboard made with Astro + Tailwind + React
+> Api used : https://rapidapi.com/api-sports/api/api-football
 
