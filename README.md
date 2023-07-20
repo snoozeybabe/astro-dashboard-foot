@@ -1,7 +1,8 @@
 # Astro Ball ⚽
 
 
-<img width="1526" alt="image" src="https://github.com/snoozeybabe/astro-dashboard-foot/assets/33023524/4e9d2341-8213-4212-aed2-b7e3e3021292">
+<img width="1470" alt="image" src="https://github.com/snoozeybabe/astro-dashboard-foot/assets/33023524/7f0d23e8-2b04-4495-9699-5f0c939f7323">
+
 
 
 
