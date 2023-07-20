@@ -4,48 +4,155 @@ import Select from '../components/Select/Select';
 import BarChart from '../components/BarChart/Barchart';
 import LineChart from '../components/LineChart/LineChart';
 
-const fakeDatas = {
-	totalYellowCards: 72,
-	totalGoals: 222,
-	totalRedCards: 0,
-	totalMinutes: 40513,
-	topScorers: [
-		{
-			name: 'Ricardo Goulart',
-			age: 32,
-			photo: 'https://media-1.api-sports.io/football/players/9937.png',
-			goals: 19,
-			team: 'JSK',
+const formattedRes = {
+	formattedToScorers: {
+		totalYellowCards: 71,
+		totalGoals: 245,
+		totalRedCards: 3,
+		totalMinutes: 47193,
+		topScorers: [
+			{
+				name: 'Dimitar Ivanov Berbatov',
+				age: 37,
+				photo: 'https://media-2.api-sports.io/football/players/113639.png',
+				goals: 20,
+			},
+			{
+				name: 'C. Tevez',
+				age: 37,
+				photo: 'https://media-3.api-sports.io/football/players/5982.png',
+				goals: 20,
+			},
+			{
+				name: 'Robin van Persie',
+				age: 36,
+				photo: 'https://media-2.api-sports.io/football/players/37162.png',
+				goals: 18,
+			},
+			{
+				name: 'Dirk Kuijt',
+				age: 37,
+				photo: 'https://media-2.api-sports.io/football/players/93990.png',
+				goals: 13,
+			},
+			{
+				name: 'D. Campbell',
+				age: 40,
+				photo: 'https://media-1.api-sports.io/football/players/114836.png',
+				goals: 13,
+			},
+		],
+	},
+	formattedStandings: {
+		matchPlayed: 760,
+		leagueResults: [
+			{
+				name: 'Manchester United',
+				logo: 'https://media-1.api-sports.io/football/teams/33.png',
+				goals: 115,
+			},
+			{
+				name: 'Chelsea',
+				logo: 'https://media-2.api-sports.io/football/teams/49.png',
+				goals: 102,
+			},
+			{
+				name: 'Manchester City',
+				logo: 'https://media-3.api-sports.io/football/teams/50.png',
+				goals: 93,
+			},
+			{
+				name: 'Arsenal',
+				logo: 'https://media-1.api-sports.io/football/teams/42.png',
+				goals: 115,
+			},
+			{
+				name: 'Tottenham',
+				logo: 'https://media-1.api-sports.io/football/teams/47.png',
+				goals: 101,
+			},
+			{
+				name: 'Liverpool',
+				logo: 'https://media-1.api-sports.io/football/teams/40.png',
+				goals: 103,
+			},
+			{
+				name: 'Everton',
+				logo: 'https://media-3.api-sports.io/football/teams/45.png',
+				goals: 96,
+			},
+			{
+				name: 'Fulham',
+				logo: 'https://media-1.api-sports.io/football/teams/36.png',
+				goals: 92,
+			},
+			{
+				name: 'Aston Villa',
+				logo: 'https://media-2.api-sports.io/football/teams/66.png',
+				goals: 107,
+			},
+			{
+				name: 'Sunderland',
+				logo: 'https://media-1.api-sports.io/football/teams/746.png',
+				goals: 101,
+			},
+			{
+				name: 'West Brom',
+				logo: 'https://media-2.api-sports.io/football/teams/60.png',
+				goals: 127,
+			},
+			{
+				name: 'Newcastle',
+				logo: 'https://media-2.api-sports.io/football/teams/34.png',
+				goals: 113,
+			},
+			{
+				name: 'Stoke City',
+				logo: 'https://media-3.api-sports.io/football/teams/75.png',
+				goals: 94,
+			},
+			{
+				name: 'Bolton',
+				logo: 'https://media-2.api-sports.io/football/teams/68.png',
+				goals: 108,
+			},
+			{
+				name: 'Blackburn',
+				logo: 'https://media-1.api-sports.io/football/teams/67.png',
+				goals: 105,
+			},
+			{
+				name: 'Wigan',
+				logo: 'https://media-2.api-sports.io/football/teams/61.png',
+				goals: 101,
+			},
+			{
+				name: 'Wolves',
+				logo: 'https://media-2.api-sports.io/football/teams/39.png',
+				goals: 112,
+			},
+			{
+				name: 'Birmingham',
+				logo: 'https://media-2.api-sports.io/football/teams/54.png',
+				goals: 95,
+			},
+			{
+				name: 'Blackpool',
+				logo: 'https://media-3.api-sports.io/football/teams/1356.png',
+				goals: 133,
+			},
+			{
+				name: 'West Ham',
+				logo: 'https://media-3.api-sports.io/football/teams/48.png',
+				goals: 113,
+			},
+		],
+		winner: {
+			id: 33,
+			name: 'Manchester United',
+			logo: 'https://media-1.api-sports.io/football/teams/33.png',
 		},
-		{
-			name: 'Wu Lei',
-			age: 32,
-			photo: 'https://media-2.api-sports.io/football/players/47350.png',
-			goals: 14,
-			team: 'JSK',
-		},
-		{
-			name: 'Alan',
-			age: 34,
-			photo: 'https://media-1.api-sports.io/football/players/80836.png',
-			goals: 14,
-			team: 'MCA',
-		},
-		{
-			name: 'D. Ba',
-			age: 36,
-			photo: 'https://media-3.api-sports.io/football/players/49862.png',
-			goals: 14,
-			team: 'MCA',
-		},
-		{
-			name: 'James Chamanga',
-			age: 43,
-			photo: 'https://media-1.api-sports.io/football/players/78990.png',
-			goals: 14,
-			team: 'USMA',
-		},
-	],
+	},
 };
 
 const formatTopScrorers = async datas => {
@@ -165,26 +272,28 @@ function Dashboard({ apiRapidKey, leagueDatas }) {
 	};
 	useEffect(() => {
 		try {
-			fetchDatas()
-				.then(async res => {
-					const scrorerResult = res[0].result;
-					const standingResult = res[1].result;
+			// fetchDatas()
+			// 	.then(async res => {
+			// 		const scrorerResult = res[0].result;
+			// 		const standingResult = res[1].result;
 
-					console.log(standingResult);
+			// 		console.log(standingResult);
 
-					const formattedToScorers = await formatTopScrorers(
-						scrorerResult.response
-					);
-					const formattedStandings = await formatLeagueStat(standingResult);
-					return { formattedToScorers, formattedStandings };
-				})
-				.then(formattedRes => {
-					setLeagueStats(formattedRes.formattedStandings);
-					setScorersDatas(formattedRes.formattedToScorers);
-				})
-				.catch(err => {
-					return err;
-				});
+			// 		const formattedToScorers = await formatTopScrorers(
+			// 			scrorerResult.response
+			// 		);
+			// 		const formattedStandings = await formatLeagueStat(standingResult);
+			// 		return { formattedToScorers, formattedStandings };
+			// 	})
+			// 	.then(formattedRes => {
+			setLeagueStats(formattedRes.formattedStandings);
+			setScorersDatas(formattedRes.formattedToScorers);
+
+			// 	console.log(formattedRes);
+			// })
+			// .catch(err => {
+			// 	return err;
+			//	});
 		} catch (error) {
 			console.log(error);
 		}
@@ -212,7 +321,7 @@ function Dashboard({ apiRapidKey, leagueDatas }) {
 	const { leagueResults, winner } = leagueStats;
 	return (
 		<>
-			<div className=" h-auto mb-2 relative ">
+			<div className="h-auto mb-2 relative">
 				<span className="bold text-[#F9EBE0] text-3xl m-auto">
 					Astro Ball ⚽
 				</span>
@@ -245,7 +354,7 @@ function Dashboard({ apiRapidKey, leagueDatas }) {
 					return (
 						<div className="p-4 w-1/4 h-full rounded-xl bg-[#FDF48C] text-[#000200] flex flex-col">
 							<span>{t.title}</span>
-							<span className="bold text-[4em] m-auto">
+							<span className="bold text-[5em] m-auto">
 								{t.valueKey && scorersDatas[t.valueKey]
 									? scorersDatas[t.valueKey]
 									: 0}
@@ -270,7 +379,7 @@ function Dashboard({ apiRapidKey, leagueDatas }) {
 							scorersDatas.topScorers.map(scorer => {
 								return (
 									<div className=" w-auto h-auto flex flex-col items-center justify-evenly text-[#000200] gap-1">
-										<div className="border overflow-hidden border-[#000200] w-28 h-28 rounded-full">
+										<div className=" overflow-hidden  w-28 h-28 rounded-full">
 											<img className="  rounded-full" src={scorer.photo} />
 										</div>
 										<span className="font-bold text-[1vw] ">{scorer.name}</span>
@@ -281,11 +390,11 @@ function Dashboard({ apiRapidKey, leagueDatas }) {
 						)}
 					</div>
 				</div>
-				<div className="p-2 w-1/4 h-full rounded-xl bg-[#FDF48C] text-[#000200] flex flex-col items-center">
+				<div className="p-2 w-1/4 h-full rounded-xl bg-[#FDF48C] text-[#000200] flex flex-col items-center justify-around">
 					<span>Season Winner</span>
 
 					<img className="  rounded-full w-32 h-32 " src={winner['logo']} />
-					<span className="bold text-[1em] m-auto">{winner['name']} </span>
+					<span className="bold text-[1em]">{winner['name']} </span>
 				</div>
 			</div>
 			<div
@@ -293,7 +402,7 @@ function Dashboard({ apiRapidKey, leagueDatas }) {
 				className="h-1/3 flex flex-row gap-6 text-[#000200]">
 				<div className="p-4 w-1/4 h-full rounded-xl bg-[#FDF48C] text-[#000200] flex flex-col">
 					<span>{bottomKpi.title}</span>
-					<span className="bold text-[4em] m-auto">{bottomKpi.value}</span>
+					<span className="bold text-[5em] m-auto">{bottomKpi.value}</span>
 				</div>
 				<div className="p-2 w-3/4 h-full rounded-xl bg-[#FDF48C]">
 					{leagueResults && leagueResults.length > 0 ? (
